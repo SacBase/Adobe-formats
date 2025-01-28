@@ -31,7 +31,7 @@ jobs:
       - name: Install stdlib-basic
         run: |
           wget ${BASE_URL}/Ubl20/stdlib-basic.deb
-          sudo apt install stdlib-basic.deb
+          sudo apt install ./stdlib-basic.deb
       - name: Create build dir
         run: |
           cmake -E make_directory ${{runner.workspace}}/build
