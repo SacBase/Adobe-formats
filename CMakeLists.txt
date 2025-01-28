@@ -12,7 +12,6 @@ SET (LINKSETSIZE "0"                   CACHE STRING "Set a value for -linksetsiz
 
 # Check whether sac2c is operational
 INCLUDE ("cmake-common/check-sac2c.cmake")
-INCLUDE ("cmake-common/misc-macros.cmake")
 
 # For every target run CMakeLists.txt in src
 FOREACH (TARGET IN ITEMS ${TARGETS})
@@ -20,4 +19,4 @@ FOREACH (TARGET IN ITEMS ${TARGETS})
 ENDFOREACH ()
 
 # This build target is responsible for generating the package sac2crc file
-CREATE_SAC2CRC_TARGET ("sac-adobe" "${DLL_BUILD_DIR}" "${DLL_BUILD_DIR}" "")
+CREATE_SAC2CRC_TARGET ("adobe" "${DLL_BUILD_DIR}" "${DLL_BUILD_DIR}" "")
