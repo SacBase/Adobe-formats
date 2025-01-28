@@ -28,6 +28,8 @@ jobs:
           wget ${BASE_URL}/Ubl20/sac2c-basic.deb
           sudo apt install ./sac2c-basic.deb
           sac2c -V
+      - name: Install sac-stdlib
+        run: |
           wget ${BASE_URL}/Ubl20/sac-stdlib.deb
           sudo apt install sac-stdlib.deb
       - name: Create build dir
