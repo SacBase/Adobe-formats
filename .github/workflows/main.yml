@@ -1,17 +1,10 @@
-# The following configuration is used to setup GitHub Actions
-# for building (and running unit tests) on pushes and PRs.
-# At the moment, we build on two runner types: Linux and MacOS,
-# specific version information can be found further below.
-name: Build On Changes
+name: Build
 
-# run action on all pushes and pull_request for all branches
 on: [push, pull_request]
 
-# high-level constants
 env:
   BASE_URL: https://gitlab.sac-home.org/sac-group/sac-packages/-/raw/master/latest/weekly
 
-# action listing, all jobs run in parallel
 jobs:
   build_linux:
     runs-on: ubuntu-20.04
@@ -19,9 +12,7 @@ jobs:
       - name: Get HEAD and submodules
         uses: actions/checkout@v2
         with:
-          # we need to get tag information
           fetch-depth: 0
-          # we need to get all submodules
           submodules: 'recursive'
       - name: Install sac2c-basic
         run: |
@@ -39,7 +30,7 @@ jobs:
       - name: Configure build-system
         shell: bash
         working-directory: ${{runner.workspace}}/build
-        run: cmake -DLINKSETSIZE=200 -DFULLTYPES=ON $GITHUB_WORKSPACE
+        run: cmake $GITHUB_WORKSPACE
       - name: Build
         shell: bash
         working-directory: ${{runner.workspace}}/build
@@ -56,9 +47,7 @@ jobs:
       - name: Get HEAD and submodules
         uses: actions/checkout@v2
         with:
-          # we need to get tag information
           fetch-depth: 0
-          # we need to get all submodules
           submodules: 'recursive'
       - name: Install sac2c-basic
         run: |
@@ -81,7 +70,7 @@ jobs:
       - name: Configure build-system
         shell: bash
         working-directory: ${{runner.workspace}}/build
-        run: cmake -DLINKSETSIZE=200 -DFULLTYPES=ON ${GITHUB_WORKSPACE}
+        run: cmake ${GITHUB_WORKSPACE}
       - name: Build
         shell: bash
         working-directory: ${{runner.workspace}}/build

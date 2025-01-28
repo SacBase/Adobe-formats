@@ -6,9 +6,8 @@ PROJECT (sac-adobe)
 SET (DLL_BUILD_DIR "${PROJECT_BINARY_DIR}/lib")
 
 # For what targets we build modules
-SET (TARGETS     seq seq_checks mt_pth CACHE STRING "Build stdlib-cuda for these targets")
+SET (TARGETS     seq seq_checks mt_pth CACHE STRING "Build for these targets")
 SET (SAC2C_EXEC                        CACHE STRING "A path to sac2c compiler")
-SET (LINKSETSIZE "0"                   CACHE STRING "Set a value for -linksetsize parameter of sac2c")
 
 # Check whether sac2c is operational
 INCLUDE ("cmake-common/check-sac2c.cmake")
