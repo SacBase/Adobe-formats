@@ -1,5 +1,5 @@
 INCLUDE ("${CMAKE_SOURCE_DIR}/cmake-common/sac2c-variables.cmake")
-INCLUDE ("${CMAKE_SOURCE_DIR}/cmake-common/resolve-sac2c-dependencies.cmake")
+INCLUDE ("${CMAKE_SOURCE_DIR}/cmake-common/generate-sac2c-dependency-targets.cmake")
 
 # C files
 SET (C_DEPS_SRC
@@ -50,8 +50,20 @@ FOREACH (name ${SAC_SRC})
     SET (mod "${DLL_BUILD_DIR}/${TARGET_ENV}/${SBI}/lib${dst}Mod${VARIANT}${MODEXT}")
     SET (tree "${DLL_BUILD_DIR}/tree/${TARGET_ENV}/${SBI}/lib${dst}Tree${VARIANT}${TREE_DLLEXT}")
 
-    RESOLVE_SAC_DEPENDENCIES ("${name}" "${SAC_SRC}" deps_list)
-    MESSAGE ("Dependencies of ${name} => ${deps_list}")
+    RESOLVE_SAC_DEPS_AS_TARGETS ("${name}" "<TARGET>-module-<NAME>" target_list object_list source_list)
+    MESSAGE ("Targets of ${name} => ${target_list}")
+    MESSAGE ("Objects of ${name} => ${object_list}")
+    MESSAGE ("Sources of ${name} => ${source_list}")
+
+    LIST (APPEND deps_list ${target_list} ${object_list} ${source_list})
+    UNSET (target_list)
+    UNSET (object_list)
+    UNSET (source_list)
+
+    # Make sure that we have the directory we are changing to.
+    FILE (MAKE_DIRECTORY "${dir}")
+
+    ADD_CUSTOM_TARGET (${TARGET}-module-${dst} DEPENDS "${mod}" "${tree}")
 
     ADD_CUSTOM_COMMAND (
         OUTPUT ${mod} ${tree}
