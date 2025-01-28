@@ -11,6 +11,7 @@ SET (SAC2C_EXEC                        CACHE STRING "A path to sac2c compiler")
 
 # Check whether sac2c is operational
 INCLUDE ("cmake-common/check-sac2c.cmake")
+INCLUDE ("cmake-common/misc-macros.cmake")
 
 # For every target run CMakeLists.txt in src
 FOREACH (TARGET IN ITEMS ${TARGETS})

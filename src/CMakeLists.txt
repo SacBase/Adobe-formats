@@ -38,4 +38,4 @@ ENDFOREACH (name)
 # Make a directory for sac2c output
 FILE (MAKE_DIRECTORY "${DLL_BUILD_DIR}/${TARGET_ENV}/${SBI}")
 
-# For every sac file, compile Tree and Mod files.
+# For every SaC file, compile Tree and Mod files.
