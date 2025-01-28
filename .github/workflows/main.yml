@@ -28,6 +28,8 @@ jobs:
           wget ${BASE_URL}/Ubl20/sac2c-basic.deb
           sudo apt install ./sac2c-basic.deb
           sac2c -V
+          wget ${BASE_URL}/Ubl18/sac-stdlib.deb
+          sudo apt install sac-stdlib.deb
       - name: Create build dir
         run: |
           cmake -E make_directory ${{runner.workspace}}/build
