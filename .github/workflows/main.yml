@@ -65,6 +65,10 @@ jobs:
           wget ${BASE_URL}/MacOS_x86/sac2c-basic.pkg
           sudo installer -pkg ./sac2c-basic.pkg -target /
           sac2c -V
+      - name: Install sac-stdlib
+        run: |
+          wget ${BASE_URL}/MacOS_x86/sac-stdlib.pkg
+          sudo installer -pkg ./sac2c-stdlib.pkg -target /
       - name: Set XCode version
         run: |
           sudo xcode-select -switch "/Applications/Xcode_14.1.0.app"
