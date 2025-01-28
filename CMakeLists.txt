@@ -1,4 +1,4 @@
-CMAKE_MINIMUM_REQUIRED (VERSION 3.19)
+CMAKE_MINIMUM_REQUIRED (VERSION 3.20)
 
 PROJECT (sac-adobe)
 
@@ -6,8 +6,8 @@ PROJECT (sac-adobe)
 SET (DLL_BUILD_DIR "${PROJECT_BINARY_DIR}/lib")
 
 # For what targets we build modules
-SET (TARGETS     seq seq_checks mt_pth CACHE STRING "Build for these targets")
-SET (SAC2C_EXEC                        CACHE STRING "A path to sac2c compiler")
+SET (TARGETS    seq seq_checks mt_pth CACHE STRING "Build for these targets")
+SET (SAC2C_EXEC                       CACHE STRING "A path to sac2c compiler")
 
 # Check whether sac2c is operational
 INCLUDE ("cmake-common/check-sac2c.cmake")
