@@ -1,5 +1,6 @@
 INCLUDE ("${CMAKE_SOURCE_DIR}/cmake-common/sac2c-variables.cmake")
 INCLUDE ("${CMAKE_SOURCE_DIR}/cmake-common/generate-sac2c-dependency-targets.cmake")
+INCLUDE ("${CMAKE_SOURCE_DIR}/cmake/parse-core-ext-files.cmake")
 
 # C files relative to this CMakeLists.txt.
 SET (C_DEPS_SRC
